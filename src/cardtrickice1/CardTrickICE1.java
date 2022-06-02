@@ -39,6 +39,7 @@ public class CardTrickICE1 {
         int suit_no = in.nextInt();
         
         Card c = new Card();
+        lucky_card = new Card(1, 4);
         c.set_suite(suit_no - 1);
         for(int i =0; i < rr.length; i++){
             if(rr[i].value == card_no){
