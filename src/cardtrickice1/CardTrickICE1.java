@@ -10,24 +10,52 @@ package cardtrickice1;
  * step 3: user card is in  the array 'card is found'
  *
  * @author sivagamasrinivasan,May 23rd
+ * @modifier chahat jain 991668960
  */
+import java.util.Scanner;
 public class CardTrickICE1 {
 
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) 
     {
-        Card[] magicHand = new Card[7]; //Array of object
-        for( int i=0;i<magicHand.length;i++)
-        {
-            Card c1 = new Card();
-            c1.setValue(2);//use a method to generate random *13
-            c1.setSuits("hearts");//random method suit 
+        Card[] rr = new Card[7];
+        for(int i = 0; i < rr.length; i++){
+            Card c = new Card();
+            int r = c.get_randd();
+            int s = c.getSuite();
+            c.setValue(r);
+            c.set_suite(s);
+            rr[i] = c;
         }
-        //step 2:take input 
         
-        //step 3: match with array 
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter a card number:(1 - 12) ");
+        int card_no = in.nextInt();
+        
+        System.out.println("1: Heart\n2: Diamond\n3: Spades\n4: Clubs");
+        int suit_no = in.nextInt();
+        
+        Card c = new Card();
+        c.set_suite(suit_no - 1);
+        for(int i =0; i < rr.length; i++){
+            if(rr[i].value == card_no){
+                //if(rr[i].suite_value == c.suite_value){}
+                System.out.println("Congratulations!Your card matches.");
+                break;
+                
+            }
+            if(i == 7){
+                System.out.println("Sorry!No match found");
+            }
+        }
+        System.out.println("Cards are: ");
+        for(int i = 0; i < 7; i++){
+            System.out.println(rr[i].value + " of " + rr[i].suite_value);
+        }
+        
     }
     
 }
